@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b18">
+<title>Little Universe</title>
+<style>
+:root{color-scheme:dark;--ink:#edf3ff;--muted:#94a3c7;--line:#28304c;--glass:rgba(12,17,38,.72)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#070a16;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.overlay{position:fixed;inset:0;pointer-events:none;padding:clamp(16px,3vw,36px);display:flex;flex-direction:column;justify-content:space-between}
+header,.bottom{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.brand{pointer-events:auto;display:flex;gap:12px;align-items:center}.orb{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0 2%,#a7b8ff 4%,#7c5cff 25%,#17245a 58%,#090d20 72%);box-shadow:0 0 30px #7064ff66,inset -7px -8px 15px #0009}.eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#a8b8ff}.brand h1{font-size:19px;letter-spacing:-.04em;margin:2px 0 0;font-weight:650}.pill{pointer-events:auto;border:1px solid #3a4263;background:#10162dbb;padding:9px 12px;border-radius:99px;font-size:11px;color:#cbd5f5;backdrop-filter:blur(12px)}
+.center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:min(540px,90vw);pointer-events:none;text-shadow:0 2px 30px #000}.center h2{font-size:clamp(36px,7vw,76px);line-height:.98;letter-spacing:-.075em;font-weight:650;margin:0 0 14px;background:linear-gradient(115deg,#fff 20%,#c5caff 55%,#8e7bff);color:transparent;background-clip:text}.center p{font-size:clamp(12px,1.5vw,15px);line-height:1.7;color:#c0c9e7;margin:0 auto;max-width:370px}
+.bottom{align-items:flex-end}.hint,.stats{border:1px solid #28304c;background:var(--glass);backdrop-filter:blur(14px);border-radius:14px;padding:12px 15px;color:var(--muted);font-size:11px;line-height:1.7}.hint strong{color:#e8edff;font-weight:600}.stats{text-align:right;min-width:124px}.stats b{font-size:18px;color:#fff;font-variant-numeric:tabular-nums}.controls{pointer-events:auto;position:fixed;left:50%;bottom:clamp(76px,11vh,104px);transform:translateX(-50%);display:flex;gap:8px;padding:8px;border:1px solid #303858;border-radius:16px;background:#0b1024c9;backdrop-filter:blur(18px);box-shadow:0 15px 60px #0005;max-width:calc(100vw - 24px)}
+button{font:inherit;color:#dce4ff;border:1px solid transparent;background:transparent;border-radius:10px;padding:10px 13px;font-size:12px;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}button:hover{background:#20294b;border-color:#454f7a}button:active{transform:scale(.96)}button.primary{background:linear-gradient(135deg,#7565ff,#5d73f4);color:white;box-shadow:0 4px 18px #6d61ff40}button.primary:hover{background:linear-gradient(135deg,#8a7dff,#7285ff)}
+footer{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#687397;white-space:nowrap;pointer-events:none}
+@media(max-width:540px){.center{top:44%}.center h2{font-size:44px}.controls{bottom:86px;gap:2px}.controls button{padding:10px 9px;font-size:11px}.hint{max-width:190px}.stats{min-width:90px;padding:10px}.pill{display:none}.bottom{align-items:flex-end}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-label="Interactive animated particle universe"></canvas>
+<div class="overlay">
+<header><div class="brand"><div class="orb"></div><div><div class="eyebrow">A tiny experiment</div><h1>Little Universe</h1></div></div><div class="pill">✦ &nbsp; made of pixels and gravity</div></header>
+<div class="center" id="intro"><h2>Make a little<br>cosmos.</h2><p>Click anywhere to create a starburst. Drag to bend the stardust. Every tiny universe starts somewhere.</p></div>
+<div class="bottom"><div class="hint"><strong>✧ Try this</strong><br>Click to spark · drag to pull<br>Space to pause · R to remix</div><div class="stats"><div>PARTICLES</div><b id="count">0000</b><div id="state">DRIFTING QUIETLY</div></div></div>
+</div>
+<div class="controls"><button id="clear">Clear</button><button id="pause">Ⅱ Pause</button><button id="remix" class="primary">✦ Remix universe</button></div>
+<footer>no rules · just gravity</footer>
+<script>
+(()=>{
+const canvas=document.querySelector('#sky'),ctx=canvas.getContext('2d',{alpha:false});
+const countEl=document.querySelector('#count'),stateEl=document.querySelector('#state'),pauseBtn=document.querySelector('#pause'),intro=document.querySelector('#intro');
+let w=0,h=0,dpr=1,stars=[],dust=[],paused=false,last=0,elapsed=0,seed=19;
+const pointer={x:-9999,y:-9999,down:false,px:0,py:0};
+const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+const colors=['#a9b9ff','#c8a7ff','#7ee7ff','#fff0c9','#ffffff','#8a83ff'];
+function resize(){dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);seed=29;stars=Array.from({length:Math.min(240,Math.floor(w*h/5200))},()=>({x:rand()*w,y:rand()*h,r:rand()*1.35+.2,a:rand()*.7+.15,p:rand()*6.28,s:rand()*.8+.2}));}
+function burst(x,y,n=70,power=1){for(let i=0;i<n;i++){const a=rand()*Math.PI*2,v=(rand()*.9+.1)*power*(1+rand()*2);dust.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:0,max:70+rand()*110,r:rand()*2.4+.5,c:colors[Math.floor(rand()*colors.length)],spin:rand()*6.28,drag:.986});}if(dust.length>1600)dust.splice(0,dust.length-1600);intro.style.opacity='0';}
+function remix(){seed=(Math.random()*1e9)>>>0;dust=[];for(let i=0;i<8;i++){const a=i*Math.PI/4+rand()*.6,r=30+rand()*Math.min(w,h)*.24;burst(w/2+Math.cos(a)*r,h/2+Math.sin(a)*r,45,.9+rand()*1.5)}stateEl.textContent='NEW COSMOS CREATED';}
+function clear(){dust=[];intro.style.opacity='1';stateEl.textContent='DRIFTING QUIETLY'}
+function draw(t){requestAnimationFrame(draw);const dt=Math.min((t-last)/16.67||1,2);last=t;if(!paused)elapsed+=dt;
+ctx.fillStyle='#070a16';ctx.fillRect(0,0,w,h);
+const glow=ctx.createRadialGradient(w*.5,h*.48,0,w*.5,h*.48,Math.max(w,h)*.7);glow.addColorStop(0,'#171735');glow.addColorStop(.48,'#0d1128');glow.addColorStop(1,'#070a16');ctx.fillStyle=glow;ctx.fillRect(0,0,w,h);
+for(const s of stars){const tw=.55+.45*Math.sin(elapsed*.018*s.s+s.p);ctx.globalAlpha=s.a*tw;ctx.fillStyle='#dce5ff';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;
+if(!paused){for(let i=dust.length-1;i>=0;i--){const p=dust[i];p.life+=dt;if(p.life>p.max){dust.splice(i,1);continue}let dx=pointer.x-p.x,dy=pointer.y-p.y,dist2=dx*dx+dy*dy;if(dist2<180*180){const f=(pointer.down?0.22:-.04)/(Math.sqrt(dist2)+18);p.vx+=dx*f*dt;p.vy+=dy*f*dt}p.vx*=Math.pow(p.drag,dt);p.vy*=Math.pow(p.drag,dt);p.x+=p.vx*dt;p.y+=p.vy*dt;p.spin+=.02*dt;
+const alpha=Math.min(1,p.life/8)*Math.min(1,(p.max-p.life)/20);ctx.globalAlpha=alpha;ctx.shadowBlur=12;ctx.shadowColor=p.c;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,p.r*(.75+.25*Math.sin(p.spin)),0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+if(p.life<32&&p.r>1.5){ctx.globalAlpha=alpha*.17;ctx.strokeStyle=p.c;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.vx*4,p.y-p.vy*4);ctx.stroke()}}
+}else{ctx.globalAlpha=.12;ctx.fillStyle='#b5c1ff';ctx.font='12px system-ui';ctx.fillText('PAUSED',w/2-23,h*.72);ctx.globalAlpha=1}
+ctx.globalAlpha=1;countEl.textContent=String(dust.length).padStart(4,'0');if(!paused&&dust.length===0)stateEl.textContent='DRIFTING QUIETLY';}
+canvas.addEventListener('pointerdown',e=>{pointer.down=true;pointer.x=e.clientX;pointer.y=e.clientY;pointer.px=pointer.x;pointer.py=pointer.y;canvas.setPointerCapture(e.pointerId);burst(pointer.x,pointer.y,48,1.7)});
+canvas.addEventListener('pointermove',e=>{pointer.x=e.clientX;pointer.y=e.clientY;if(pointer.down){const dx=pointer.x-pointer.px,dy=pointer.y-pointer.py;if(Math.hypot(dx,dy)>8){burst(pointer.x,pointer.y,3,.4);pointer.px=pointer.x;pointer.py=pointer.y}}});
+canvas.addEventListener('pointerup',()=>pointer.down=false);canvas.addEventListener('pointercancel',()=>pointer.down=false);canvas.addEventListener('pointerleave',()=>{if(!pointer.down){pointer.x=-9999;pointer.y=-9999}});
+document.querySelector('#clear').addEventListener('click',clear);document.querySelector('#remix').addEventListener('click',remix);
+function toggle(){paused=!paused;pauseBtn.textContent=paused?'▶ Resume':'Ⅱ Pause';stateEl.textContent=paused?'TIME SUSPENDED':'TIME IS FLOWING'}pauseBtn.addEventListener('click',toggle);
+addEventListener('keydown',e=>{if(e.code==='Space'&&e.target.tagName!=='BUTTON'){e.preventDefault();toggle()}if(e.key.toLowerCase()==='r')remix();if(e.key==='Escape')clear()});
+addEventListener('resize',resize);resize();remix();requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
