@@ -1,66 +1,63 @@
-# random stuff zone
+# Random Stuff Zone
 
-this repo is now a pile of little browser toys lol. there's games, drawing things, weird graphics, a tiny open world, and a few things that just look cool.
+A collection of small, self-contained browser games, simulations, creative tools, and 3D experiments made with HTML, CSS, and JavaScript.
 
-## open it
+## Play online
 
-- **homepage / game list:** [index.html](./index.html)
-- **original particle thing:** [universe.html](./universe.html)
-- **online demo:** https://lumifaye.github.io/test/ (once GitHub Pages is enabled)
+- **[Homepage](https://lumifaye.github.io/test/)**
+- **[Experiment Lab](https://lumifaye.github.io/test/pages/mega-lab.html)**
+- **[3D Worlds](https://lumifaye.github.io/test/pages/3d/index.html)**
+- **[Arcade Games](https://lumifaye.github.io/test/pages/categories/arcade.html)**
+- **[Puzzles & Brain Games](https://lumifaye.github.io/test/pages/categories/puzzles.html)**
+- **[Simulations](https://lumifaye.github.io/test/pages/categories/simulations.html)**
+- **[Creative Tools](https://lumifaye.github.io/test/pages/categories/creative.html)**
+- **[Original particle playground](https://lumifaye.github.io/test/universe.html)**
 
-## the 20 new pages
+GitHub Pages must be enabled for the online links to work. If a page was just changed, allow Pages a little time to redeploy.
 
-| page | what it is |
+## Folder guide
+
+| Folder | Contents |
 | --- | --- |
-| [3D cube thing](./pages/cube.html) | spin a wireframe cube |
-| [tiny open world](./pages/open-world.html) | wander around a little world |
-| [tiny platformer](./pages/platformer.html) | jump around and grab coins |
-| [tiny racer](./pages/racer.html) | dodge traffic |
-| [brick bonker](./pages/breakout.html) | break bricks with a ball |
-| [snake time](./pages/snake.html) | classic snake |
-| [pong](./pages/pong.html) | play against a computer paddle |
-| [doodle pad](./pages/doodle.html) | draw and save a PNG |
-| [fractal zoomies](./pages/fractal.html) | zoom around the Mandelbrot set |
-| [terrain generator](./pages/terrain.html) | make random landscapes |
-| [desktop aquarium](./pages/aquarium.html) | fish and food in a little tank |
-| [beep grid](./pages/sequencer.html) | make a tiny tune |
-| [gravity sandbox](./pages/gravity.html) | drop bouncing balls |
-| [maze escape](./pages/maze.html) | navigate a random maze |
-| [typing test](./pages/typing.html) | type random sentences |
-| [pixel art thing](./pages/pixel-art.html) | draw pixel art and save it |
-| [tiny tower defense](./pages/tower-defense.html) | place towers and defend a path |
-| [space rocks](./pages/solar-system.html) | watch planets orbit |
-| [rainy window](./pages/rain.html) | fake rain and lightning |
-| [orbit playground](./pages/orbit.html) | throw rocks around a gravity well |
+| `pages/3d/` | Wireframe World, 3D Shape Lab, Voxel Builder, First-Person 3D Maze, and 3D Globe |
+| `pages/arcade/` | Arcade games including Pong, Breakout, and Snake |
+| `pages/puzzles/` | Minesweeper, Memory Match, Connect Four, Pathfinder, Simon Says, Reaction Test, and Typing Sprint |
+| `pages/categories/` | Category index pages linking to the collection |
+| `pages/real/` | Additional standalone games and interactive projects that have not all been moved into category folders yet |
+| `pages/` | The original standalone mini-projects and simulations |
+| `universe.html` | Original particle playground |
+| `index.html` | Main homepage |
+| `README.md` | This guide |
 
-## run it
+## 3D experiments
 
-nothing to install. each page is just an HTML file.
+- [Wireframe World](https://lumifaye.github.io/test/pages/3d/wireframe-world.html): move around a procedural wireframe landscape.
+- [3D Shape Lab](https://lumifaye.github.io/test/pages/3d/cube-lab.html): rotate and inspect geometric shapes.
+- [Voxel Builder](https://lumifaye.github.io/test/pages/3d/voxel-builder.html): interact with a small block scene.
+- [First-Person 3D Maze](https://lumifaye.github.io/test/pages/3d/first-person-maze.html): navigate a raycast maze.
+- [3D Globe](https://lumifaye.github.io/test/pages/3d/terrain-globe.html): rotate a procedural planet.
 
-1. download or clone this repo
-2. open `index.html`
-3. click whatever looks interesting
+## Run locally
 
-to clone it:
+No install, build step, package manager, or external library is required for these static pages.
+
+1. Download or clone this repository.
+2. Open `index.html` in a modern browser.
+3. Choose an experiment from the homepage or browse the category pages.
+
+To clone the repository:
 
 ```bash
 git clone https://github.com/lumifaye/test.git
 cd test
 ```
 
-should work in a modern browser, including Chrome on a Chromebook. no Linux, Play Store, npm, build step, or external libraries needed. the beep grid uses browser audio, so it'll make sound after you press play.
+Some browser features, such as audio, only start after you interact with the page.
 
-## put it online
+## GitHub Pages setup
 
-on GitHub, open **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/ (root)`, then save. once Pages finishes deploying, the homepage link should work.
+In the repository, open **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/ (root)`, and save.
 
-## files
+## License
 
-- `index.html` - the page with links to everything
-- `universe.html` - the original particle playground
-- `pages/` - the 20 extra things
-- `README.md` - this file
-
-## license
-
-there isn't a license set up yet, so don't assume the code is public domain or automatically free to reuse.
+No license is currently specified. Do not assume the code is public domain or automatically free to reuse.
