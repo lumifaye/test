@@ -1,41 +1,41 @@
-# ✨ little universe lol
+# random space dot thing
 
-it's a little space thing with a bunch of glowing dots. click around and stuff explodes. pretty much the whole point.
+i made this little space thing. it has glowy dots that explode when you click and you can mess around with them. thats basically the whole project lol
 
 ## try it
 
-- **the demo:** https://lumifaye.github.io/test/ (works once GitHub Pages is turned on)
-- **the code:** [index.html](./index.html)
+- **site:** https://lumifaye.github.io/test/ (if GitHub Pages is enabled)
+- **code:** [index.html](./index.html)
 
-## what does it do
+## what can you do
 
-- 🌌 has a star background and glowy space colors
-- 💥 click/tap to make particles go everywhere
-- 🖱️ drag around to mess with the dots
-- 🪐 has 4 modes: gravity thing, spinny, fireworks, and float around
-- 🎨 4 color options because why not
-- ⚡ change how much energy the particles have
-- ⏸️ pause it if you want
-- ♻️ clear everything or remix the universe
-- 📱 works with mouse or touchscreen
-- 🧩 no libraries or extra downloads
+- click anywhere and make a particle explosion
+- drag around and fling more dots everywhere
+- pick how the dots move
+- change the colors
+- change how fast the particles go
+- pause everything
+- clear the screen or randomize the whole thing
+
+there are 4 movement modes: get pulled around, go in circles, go up like fireworks, and just float. try them and see which one looks cool.
 
 ## controls
 
-| thing | how |
+| button/key | what it does |
 | --- | --- |
-| make particles explode | click or tap |
-| mess with particles | click and drag |
-| pause/resume | spacebar or the pause button |
-| get a different universe | press **R** or hit **remix it** |
-| clear the screen | press **Esc** or hit **clear** |
-| change how it looks | use the controls on the right |
+| click/tap | make dots explode |
+| drag | spawn more dots while moving |
+| spacebar | pause/resume |
+| `R` | randomize everything |
+| `Esc` | clear the screen |
 
-## how to run it
+there are also menus for movement, speed, and colors. go mess with them.
 
-you don't need to install anything. seriously, it's just one html file.
+## running it
 
-1. download this repo or clone it
+you dont need to install anything for this. no npm, no build tools, no framework, none of that.
+
+1. download the repo or clone it
 2. open `index.html` in your browser
 
 if you have git:
@@ -45,31 +45,29 @@ git clone https://github.com/lumifaye/test.git
 cd test
 ```
 
-then just open `index.html` in chrome, firefox, edge, whatever. should work on a chromebook too, no linux or play store needed.
+open `index.html` in Chrome or whatever browser you use. should work on a Chromebook too, without Linux or the Play Store.
 
-## put it online with GitHub Pages
+## putting it online
 
-1. go to the repo's **Settings**
-2. click **Pages**
-3. choose **Deploy from a branch**
-4. pick `main` and `/ (root)`
+if you want the site to actually be hosted:
+
+1. open this repo on GitHub
+2. go to **Settings → Pages**
+3. set it to deploy from a branch
+4. choose `main` and `/ (root)`
 5. save and wait for it to deploy
 
-then the demo link at the top should work.
+then try the site link at the top.
 
-## what's it made with
+## how it works
 
-- HTML canvas for the dots
-- CSS for the look
-- regular JavaScript for the movement and controls
-
-everything is in `index.html`. no frameworks, no build step, no extra assets. the page doesn't need to call any external services.
+its just HTML, CSS, JavaScript, and a canvas. everything is in `index.html`, so there arent any extra files to download and no external libraries needed.
 
 ## files
 
-- `index.html` - the whole thing
-- `README.md` - you're reading it lol
+- `index.html` - the actual site
+- `README.md` - this file
 
 ## license
 
-there isn't one yet, so don't assume it's free to reuse just because it's on GitHub.
+there isnt a license in the repo right now, so dont assume you can just take the code and do whatever with it.
