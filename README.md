@@ -1,78 +1,75 @@
-# ✨ Little Universe
+# ✨ little universe lol
 
-**A tiny, interactive particle playground made with plain HTML, CSS, and JavaScript.**
+it's a little space thing with a bunch of glowing dots. click around and stuff explodes. pretty much the whole point.
 
-Little Universe turns your browser into a little pocket cosmos. Click to spark a burst of stardust, drag to nudge particles around, and change the rules of the universe while it runs.
+## try it
 
-## Try it
+- **the demo:** https://lumifaye.github.io/test/ (works once GitHub Pages is turned on)
+- **the code:** [index.html](./index.html)
 
-- **Live demo:** https://lumifaye.github.io/test/ *(available after GitHub Pages is enabled for this repository)*
-- **Source:** [`index.html`](./index.html)
+## what does it do
 
-## Features
+- 🌌 has a star background and glowy space colors
+- 💥 click/tap to make particles go everywhere
+- 🖱️ drag around to mess with the dots
+- 🪐 has 4 modes: gravity thing, spinny, fireworks, and float around
+- 🎨 4 color options because why not
+- ⚡ change how much energy the particles have
+- ⏸️ pause it if you want
+- ♻️ clear everything or remix the universe
+- 📱 works with mouse or touchscreen
+- 🧩 no libraries or extra downloads
 
-- 🌌 Animated starfield and a soft, layered cosmic background
-- 💥 Click or tap anywhere to create a particle burst
-- 🖱️ Drag through the scene to stir up more stardust
-- 🪐 **Four particle styles:** Gravity Well, Orbiting, Fireworks, and Free Drift
-- 🎨 **Four color moods:** Cosmic Violet, Deep Ocean, Solar Flare, and Moonlight
-- ⚡ Adjustable particle energy
-- ⏯️ Pause and resume the animation
-- ♻️ Remix the universe or clear the canvas
-- 📱 Responsive layout with pointer and touch input
-- ♿ Honors reduced-motion preferences for interface transitions
+## controls
 
-## Controls
-
-| Action | How |
+| thing | how |
 | --- | --- |
-| Create a burst | Click or tap the canvas |
-| Stir up particles | Click and drag |
-| Pause / resume | Space bar or Pause button |
-| Create a new arrangement | Press **R** or choose **Remix universe** |
-| Clear particles | Escape or choose **Clear** |
-| Change the feel | Use the Particle Style, Energy, and Color Mood controls |
+| make particles explode | click or tap |
+| mess with particles | click and drag |
+| pause/resume | spacebar or the pause button |
+| get a different universe | press **R** or hit **remix it** |
+| clear the screen | press **Esc** or hit **clear** |
+| change how it looks | use the controls on the right |
 
-## Run locally
+## how to run it
 
-No build step, package manager, server, or external library is required.
+you don't need to install anything. seriously, it's just one html file.
 
-1. Download or clone this repository.
-2. Open `index.html` in a modern browser.
+1. download this repo or clone it
+2. open `index.html` in your browser
 
-For example:
+if you have git:
 
 ```bash
 git clone https://github.com/lumifaye/test.git
 cd test
 ```
 
-Then open `index.html` in Chrome, Firefox, Edge, or another modern browser. It should also work on a Chromebook in the browser, without Linux or the Play Store.
+then just open `index.html` in chrome, firefox, edge, whatever. should work on a chromebook too, no linux or play store needed.
 
-## Publish with GitHub Pages
+## put it online with GitHub Pages
 
-1. Open the repository's **Settings**.
-2. Select **Pages**.
-3. Under the build/deployment source, choose **Deploy from a branch**.
-4. Select the `main` branch and the `/ (root)` folder, then save.
-5. Wait for the Pages deployment to finish. The live demo link above should then become available.
+1. go to the repo's **Settings**
+2. click **Pages**
+3. choose **Deploy from a branch**
+4. pick `main` and `/ (root)`
+5. save and wait for it to deploy
 
-## Technology
+then the demo link at the top should work.
 
-- HTML5 Canvas for the particles and starfield
-- CSS for the responsive glassy interface and cosmic styling
-- Vanilla JavaScript for animation, pointer interactions, and controls
+## what's it made with
 
-Everything lives in one HTML file. There are no dependencies, tracking scripts, accounts, or network requests required by the page itself.
+- HTML canvas for the dots
+- CSS for the look
+- regular JavaScript for the movement and controls
 
-## Project structure
+everything is in `index.html`. no frameworks, no build step, no extra assets. the page doesn't need to call any external services.
 
-```text
-.
-├── index.html   # The complete interactive experience
-└── README.md    # Project guide
-```
+## files
 
-## License
+- `index.html` - the whole thing
+- `README.md` - you're reading it lol
 
-No license has been specified yet. Until one is added, assume the usual default copyright applies and reuse is not automatically granted.
+## license
+
+there isn't one yet, so don't assume it's free to reuse just because it's on GitHub.
