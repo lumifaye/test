@@ -1,73 +1,66 @@
-# random space dot thing
+# random stuff zone
 
-i made this little space thing. it has glowy dots that explode when you click and you can mess around with them. thats basically the whole project lol
+this repo is now a pile of little browser toys lol. there's games, drawing things, weird graphics, a tiny open world, and a few things that just look cool.
 
-## try it
+## open it
 
-- **site:** https://lumifaye.github.io/test/ (if GitHub Pages is enabled)
-- **code:** [index.html](./index.html)
+- **homepage / game list:** [index.html](./index.html)
+- **original particle thing:** [universe.html](./universe.html)
+- **online demo:** https://lumifaye.github.io/test/ (once GitHub Pages is enabled)
 
-## what can you do
+## the 20 new pages
 
-- click anywhere and make a particle explosion
-- drag around and fling more dots everywhere
-- pick how the dots move
-- change the colors
-- change how fast the particles go
-- pause everything
-- clear the screen or randomize the whole thing
-
-there are 4 movement modes: get pulled around, go in circles, go up like fireworks, and just float. try them and see which one looks cool.
-
-## controls
-
-| button/key | what it does |
+| page | what it is |
 | --- | --- |
-| click/tap | make dots explode |
-| drag | spawn more dots while moving |
-| spacebar | pause/resume |
-| `R` | randomize everything |
-| `Esc` | clear the screen |
+| [3D cube thing](./pages/cube.html) | spin a wireframe cube |
+| [tiny open world](./pages/open-world.html) | wander around a little world |
+| [tiny platformer](./pages/platformer.html) | jump around and grab coins |
+| [tiny racer](./pages/racer.html) | dodge traffic |
+| [brick bonker](./pages/breakout.html) | break bricks with a ball |
+| [snake time](./pages/snake.html) | classic snake |
+| [pong](./pages/pong.html) | play against a computer paddle |
+| [doodle pad](./pages/doodle.html) | draw and save a PNG |
+| [fractal zoomies](./pages/fractal.html) | zoom around the Mandelbrot set |
+| [terrain generator](./pages/terrain.html) | make random landscapes |
+| [desktop aquarium](./pages/aquarium.html) | fish and food in a little tank |
+| [beep grid](./pages/sequencer.html) | make a tiny tune |
+| [gravity sandbox](./pages/gravity.html) | drop bouncing balls |
+| [maze escape](./pages/maze.html) | navigate a random maze |
+| [typing test](./pages/typing.html) | type random sentences |
+| [pixel art thing](./pages/pixel-art.html) | draw pixel art and save it |
+| [tiny tower defense](./pages/tower-defense.html) | place towers and defend a path |
+| [space rocks](./pages/solar-system.html) | watch planets orbit |
+| [rainy window](./pages/rain.html) | fake rain and lightning |
+| [orbit playground](./pages/orbit.html) | throw rocks around a gravity well |
 
-there are also menus for movement, speed, and colors. go mess with them.
+## run it
 
-## running it
+nothing to install. each page is just an HTML file.
 
-you dont need to install anything for this. no npm, no build tools, no framework, none of that.
+1. download or clone this repo
+2. open `index.html`
+3. click whatever looks interesting
 
-1. download the repo or clone it
-2. open `index.html` in your browser
-
-if you have git:
+to clone it:
 
 ```bash
 git clone https://github.com/lumifaye/test.git
 cd test
 ```
 
-open `index.html` in Chrome or whatever browser you use. should work on a Chromebook too, without Linux or the Play Store.
+should work in a modern browser, including Chrome on a Chromebook. no Linux, Play Store, npm, build step, or external libraries needed. the beep grid uses browser audio, so it'll make sound after you press play.
 
-## putting it online
+## put it online
 
-if you want the site to actually be hosted:
-
-1. open this repo on GitHub
-2. go to **Settings → Pages**
-3. set it to deploy from a branch
-4. choose `main` and `/ (root)`
-5. save and wait for it to deploy
-
-then try the site link at the top.
-
-## how it works
-
-its just HTML, CSS, JavaScript, and a canvas. everything is in `index.html`, so there arent any extra files to download and no external libraries needed.
+on GitHub, open **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/ (root)`, then save. once Pages finishes deploying, the homepage link should work.
 
 ## files
 
-- `index.html` - the actual site
+- `index.html` - the page with links to everything
+- `universe.html` - the original particle playground
+- `pages/` - the 20 extra things
 - `README.md` - this file
 
 ## license
 
-there isnt a license in the repo right now, so dont assume you can just take the code and do whatever with it.
+there isn't a license set up yet, so don't assume the code is public domain or automatically free to reuse.
